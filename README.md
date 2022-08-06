@@ -6,3 +6,10 @@ https://colab.research.google.com/drive/1fgjDQ6hCScbsCWsRSOZsg8OWmQuqUCbH#scroll
 
 this is all based on cribbing this:
 https://towardsdatascience.com/predicting-house-prices-with-linear-regression-machine-learning-from-scratch-part-ii-47a0238aeac1
+
+TODO:
+* fix regex on scrapers
+* document scrapers
+* migrate colab to gist
+* migrate code to scrip
+* add development container stuff
