@@ -8,8 +8,7 @@ this is all based on cribbing this:
 https://towardsdatascience.com/predicting-house-prices-with-linear-regression-machine-learning-from-scratch-part-ii-47a0238aeac1
 
 TODO:
-* fix regex on scrapers
-* document scrapers
 * migrate colab to gist
-* migrate code to scrip
-* add development container stuff
+* migrate code to script
+
+Note:  When exporting a sitemap, regex patterns have extra '\' inserted such that the regex pattern isn't correct when viewed in the JSON.  However, upon import, these extra '\' are removed, so don't attempt to fix regex in the JSON file.
