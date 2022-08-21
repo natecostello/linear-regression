@@ -1,0 +1,136 @@
+{
+  "_id": "functioning-hatteras",
+  "startUrl": [
+    "https://www.zillow.com/waves-nc/sold/",
+    "https://www.zillow.com/hatteras-nc/sold/",
+    "https://www.zillow.com/buxton-nc/sold/",
+    "https://www.zillow.com/avon-nc/sold/",
+    "https://www.zillow.com/frisco-nc/sold/",
+    "https://www.zillow.com/rodanthe-nc/"
+  ],
+  "selectors": [
+    {
+      "id": "Separate scroller",
+      "parentSelectors": ["_root", "PaginationLinks"],
+      "type": "SelectorElementScroll",
+      "selector": "div#grid-search-results > ul > li:nth-of-type(2n+3)",
+      "multiple": true,
+      "delay": 2000,
+      "scrollElementSelector": "div.search-page-list-container"
+    },
+    {
+      "id": "Item wrappers",
+      "parentSelectors": ["_root", "PaginationLinks"],
+      "type": "SelectorElement",
+      "selector": "div#grid-search-results > ul > li",
+      "multiple": true,
+      "delay": 0
+    },
+    {
+      "id": "ListingLink",
+      "parentSelectors": ["Item wrappers"],
+      "type": "SelectorLink",
+      "selector": "a.list-card-link",
+      "multiple": false,
+      "delay": 0
+    },
+    {
+      "id": "YearBuilt",
+      "parentSelectors": ["ListingLink"],
+      "type": "SelectorText",
+      "selector": "li:nth-of-type(2) span.dpf__sc-2arhs5-3",
+      "multiple": false,
+      "delay": 0,
+      "regex": ""
+    },
+    {
+      "id": "LotSize",
+      "parentSelectors": ["ListingLink"],
+      "type": "SelectorText",
+      "selector": "li:nth-of-type(6) span.dpf__sc-2arhs5-3",
+      "multiple": false,
+      "delay": 0,
+      "regex": ""
+    },
+    {
+      "id": "PropertyDetails",
+      "parentSelectors": ["ListingLink"],
+      "type": "SelectorText",
+      "selector": "div.kHzFzO:nth-of-type(2)",
+      "multiple": false,
+      "delay": 0,
+      "regex": ""
+    },
+    {
+      "id": "beds",
+      "parentSelectors": ["Item wrappers"],
+      "type": "SelectorText",
+      "selector": "li:nth-of-type(1)",
+      "multiple": false,
+      "delay": 0,
+      "regex": "[0-9]"
+    },
+    {
+      "id": "baths",
+      "parentSelectors": ["Item wrappers"],
+      "type": "SelectorText",
+      "selector": "li:nth-of-type(2)",
+      "multiple": false,
+      "delay": 0,
+      "regex": "[0-9]+\\.?[0-9]*|\\.[0-9]+"
+    },
+    {
+      "id": "size",
+      "parentSelectors": ["Item wrappers"],
+      "type": "SelectorText",
+      "selector": "li:nth-of-type(3)",
+      "multiple": false,
+      "delay": 0,
+      "regex": "[0-9,]+"
+    },
+    {
+      "id": "date-sold",
+      "parentSelectors": ["Item wrappers"],
+      "type": "SelectorText",
+      "selector": "div.list-card-variable-text",
+      "multiple": false,
+      "delay": 0,
+      "regex": "(0[1-9]|1[0-2])\\/(0[1-9]|[12][0-9]|3[01])\\/\\d{4}"
+    },
+    {
+      "id": "address",
+      "parentSelectors": ["Item wrappers"],
+      "type": "SelectorText",
+      "selector": "address",
+      "multiple": false,
+      "delay": 0,
+      "regex": ""
+    },
+    {
+      "id": "price",
+      "parentSelectors": ["Item wrappers"],
+      "type": "SelectorText",
+      "selector": "div.list-card-price",
+      "multiple": false,
+      "delay": 0,
+      "regex": ""
+    },
+    {
+      "id": "price-link",
+      "parentSelectors": ["ListingLink"],
+      "type": "SelectorText",
+      "selector": ".hdp__sc-ym74hh-0 strong",
+      "multiple": false,
+      "delay": 0,
+      "regex": "[0-9,$]+"
+    },
+    {
+      "id": "PaginationLinks",
+      "parentSelectors": ["_root", "PaginationLinks"],
+      "type": "SelectorLink",
+      "selector": ".PaginationJumpItem-c11n-8-69-2__sc-18wdg2l-0 a.iBiCYN",
+      "multiple": true,
+      "delay": 0
+    }
+  ]
+}
