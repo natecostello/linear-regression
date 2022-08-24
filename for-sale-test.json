@@ -1,0 +1,119 @@
+{
+  "_id": "buxton-for-sale-test",
+  "startUrl": ["https://www.zillow.com/buxton-nc/for-sale/"],
+  "selectors": [
+    {
+      "id": "Separate scroller",
+      "parentSelectors": ["_root", "PaginationLinks"],
+      "type": "SelectorElementScroll",
+      "selector": "div#grid-search-results > ul > li:nth-of-type(2n+3)",
+      "multiple": true,
+      "delay": 2000,
+      "scrollElementSelector": "div.search-page-list-container"
+    },
+    {
+      "id": "Item wrappers",
+      "parentSelectors": ["_root", "PaginationLinks"],
+      "type": "SelectorElement",
+      "selector": "div#grid-search-results > ul > li",
+      "multiple": true,
+      "delay": 0
+    },
+    {
+      "id": "ListingLink",
+      "parentSelectors": ["Item wrappers"],
+      "type": "SelectorLink",
+      "selector": "a.StyledPropertyCardDataArea-c11n-8-69-2__sc-yipmu-0",
+      "multiple": false,
+      "delay": 0
+    },
+    {
+      "id": "YearBuilt",
+      "parentSelectors": ["ListingLink"],
+      "type": "SelectorText",
+      "selector": "li:nth-of-type(4) span.dpf__sc-2arhs5-3",
+      "multiple": false,
+      "delay": 0,
+      "regex": ""
+    },
+    {
+      "id": "LotSize",
+      "parentSelectors": ["ListingLink"],
+      "type": "SelectorElement",
+      "selector": "div.Spacer-c11n-8-65-2__sc-17suqs2-0:nth-of-type(2) div:nth-of-type(4) li:nth-of-type(1) span",
+      "multiple": false,
+      "delay": 0
+    },
+    {
+      "id": "PropertyDetails",
+      "parentSelectors": ["ListingLink"],
+      "type": "SelectorText",
+      "selector": "div.kHzFzO:nth-of-type(2)",
+      "multiple": false,
+      "delay": 0,
+      "regex": ""
+    },
+    {
+      "id": "beds",
+      "parentSelectors": ["Item wrappers"],
+      "type": "SelectorText",
+      "selector": ".StyledPropertyCardHomeDetails-c11n-8-69-2__sc-1mlc4v9-0 span:nth-of-type(1) b",
+      "multiple": false,
+      "delay": 0,
+      "regex": "[0-9]+"
+    },
+    {
+      "id": "baths",
+      "parentSelectors": ["Item wrappers"],
+      "type": "SelectorText",
+      "selector": "span:nth-of-type(2) b",
+      "multiple": false,
+      "delay": 0,
+      "regex": "[0-9]+\\.?[0-9]*|\\.[0-9]+"
+    },
+    {
+      "id": "size",
+      "parentSelectors": ["Item wrappers"],
+      "type": "SelectorText",
+      "selector": "span:nth-of-type(3) b",
+      "multiple": false,
+      "delay": 0,
+      "regex": "[0-9,]+"
+    },
+    {
+      "id": "address",
+      "parentSelectors": ["Item wrappers"],
+      "type": "SelectorText",
+      "selector": "address",
+      "multiple": false,
+      "delay": 0,
+      "regex": ""
+    },
+    {
+      "id": "price",
+      "parentSelectors": ["Item wrappers"],
+      "type": "SelectorText",
+      "selector": ".kJFQQX span",
+      "multiple": false,
+      "delay": 0,
+      "regex": ""
+    },
+    {
+      "id": "price-link",
+      "parentSelectors": ["ListingLink"],
+      "type": "SelectorText",
+      "selector": ".dpf__sc-1me8eh6-0 span",
+      "multiple": false,
+      "delay": 0,
+      "regex": "[0-9,$]+"
+    },
+    {
+      "id": "PaginationLinks",
+      "parentSelectors": ["_root", "PaginationLinks"],
+      "type": "SelectorLink",
+      "selector": ".PaginationJumpItem-c11n-8-69-2__sc-18wdg2l-0 a.iBiCYN",
+      "multiple": true,
+      "delay": 0
+    }
+  ]
+}
