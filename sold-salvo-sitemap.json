@@ -1,12 +1,6 @@
 {
-  "_id": "hatteras-sold",
+  "_id": "sold-salvo",
   "startUrl": [
-    "https://www.zillow.com/waves-nc/sold/",
-    "https://www.zillow.com/hatteras-nc/sold/",
-    "https://www.zillow.com/buxton-nc/sold/",
-    "https://www.zillow.com/avon-nc/sold/",
-    "https://www.zillow.com/frisco-nc/sold/",
-    "https://www.zillow.com/rodanthe-nc/sold/",
     "https://www.zillow.com/salvo-nc/sold/"
 ],
   "selectors": [
