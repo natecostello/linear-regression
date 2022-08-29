@@ -1,8 +1,6 @@
 {
   "_id": "sold-avon",
-  "startUrl": [
-    "https://www.zillow.com/avon-nc/sold/"
-],
+  "startUrl": ["https://www.zillow.com/avon-nc/sold/"],
   "selectors": [
     {
       "delay": 2000,
