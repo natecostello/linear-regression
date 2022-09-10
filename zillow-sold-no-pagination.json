@@ -1,0 +1,123 @@
+{
+  "_id": "zillow-sold-no-pagination",
+  "startUrl": [
+    "https://www.zillow.com/avon-nc/sold/",
+    "https://www.zillow.com/buxton-nc/sold/",
+    "https://www.zillow.com/frisco-nc/sold/",
+    "https://www.zillow.com/hatteras-nc/sold/",
+    "https://www.zillow.com/salvo-nc/sold/",
+    "https://www.zillow.com/rodanthe-nc/sold/",
+    "https://www.zillow.com/waves-nc/sold/"
+  ],
+  "selectors": [
+    {
+      "delay": 2500,
+      "elementLimit": 0,
+      "id": "Separate scroller",
+      "multiple": true,
+      "parentSelectors": ["_root"],
+      "scrollElementSelector": "div.search-page-list-container",
+      "selector": "#grid-search-results > ul article[class*='list-card']",
+      "type": "SelectorElementScroll"
+    },
+    {
+      "id": "ListingLink",
+      "multiple": false,
+      "parentSelectors": ["Separate scroller"],
+      "selector": "a[href*='/homedetails/']",
+      "type": "SelectorLink"
+    },
+    {
+      "id": "YearBuilt",
+      "multiple": false,
+      "parentSelectors": ["listing-page-wrapper"],
+      "regex": "",
+      "selector": "li:has(> span svg title:contains('Year Built')) > span:last-of-type",
+      "type": "SelectorText"
+    },
+    {
+      "id": "LotSize",
+      "multiple": false,
+      "parentSelectors": ["listing-page-wrapper"],
+      "regex": "",
+      "selector": "li:has(> span svg title:contains('Lot')) > span:last-of-type",
+      "type": "SelectorText"
+    },
+    {
+      "id": "PropertyDetails",
+      "multiple": false,
+      "parentSelectors": ["listing-page-wrapper"],
+      "regex": "",
+      "selector": "div:has( > h5:contains('Property details')), div:has( > p:contains('Property details'))",
+      "type": "SelectorText"
+    },
+    {
+      "id": "beds",
+      "multiple": false,
+      "parentSelectors": ["Separate scroller"],
+      "regex": "[0-9]",
+      "selector": "li:contains('bd'), span[class*='StyledPropertyCardHomeDetails'] span:contains('bd')",
+      "type": "SelectorText"
+    },
+    {
+      "id": "baths",
+      "multiple": false,
+      "parentSelectors": ["Separate scroller"],
+      "regex": "[0-9]+\\.?[0-9]*|\\.[0-9]+",
+      "selector": "li:contains('ba'), span[class*='StyledPropertyCardHomeDetails'] span:contains('ba')",
+      "type": "SelectorText"
+    },
+    {
+      "id": "size",
+      "multiple": false,
+      "parentSelectors": ["Separate scroller"],
+      "regex": "[0-9,]+",
+      "selector": "li:contains('sqft'), span[class*='StyledPropertyCardHomeDetails'] span:contains('sqft')",
+      "type": "SelectorText"
+    },
+    {
+      "id": "date-sold",
+      "multiple": false,
+      "parentSelectors": ["Separate scroller"],
+      "regex": "[\\d/]+",
+      "selector": "div:not(:has(>)):contains('Sold'), span[class*='StyledPropertyCardBadge']:contains('Sold')",
+      "type": "SelectorText"
+    },
+    {
+      "id": "address",
+      "multiple": false,
+      "parentSelectors": ["Separate scroller"],
+      "regex": "",
+      "selector": "address",
+      "type": "SelectorText"
+    },
+    {
+      "id": "price",
+      "multiple": false,
+      "parentSelectors": ["Separate scroller"],
+      "regex": "",
+      "selector": "div[class*='price'], [data-test=\"property-card-price\"]",
+      "type": "SelectorText"
+    },
+    {
+      "id": "price-link",
+      "multiple": false,
+      "parentSelectors": ["listing-page-wrapper"],
+      "regex": "[0-9,$]+",
+      "selector": ".hdp__sc-ym74hh-0 strong",
+      "type": "SelectorText"
+    },
+    {
+      "clickElementSelector": "a:contains('Home details')",
+      "clickElementUniquenessType": "uniqueText",
+      "clickType": "clickOnce",
+      "delay": 2000,
+      "discardInitialElements": "discard-when-click-element-exists",
+      "id": "listing-page-wrapper",
+      "multiple": true,
+      "parentSelectors": ["ListingLink"],
+      "selector": "html:has(#home-details-render)",
+      "type": "SelectorElementClick"
+    }
+  ]
+}
