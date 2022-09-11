@@ -15,3 +15,4 @@ TODO:
 Note:  When exporting a sitemap, regex patterns have extra '\' inserted such that the regex pattern isn't correct when viewed in the JSON.  However, upon import, these extra '\' are removed, so don't attempt to fix regex in the JSON file.
 
 Note: "zillow-sold.json" includes modifications recommended by webscraper.io to the sold-[town]-sitemap.json files.
+Note: "zillow-sold-no-pagination.json" only scrapes the first page (39-40 entries) of each start url.
