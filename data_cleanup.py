@@ -3,6 +3,10 @@ import datetime
 import numpy as np
 import pandas as pd
 
+
+
+
+
 def format_and_parse(webscrapper_csv_path):
     # Create Dataframe
     df = pd.read_csv(webscrapper_csv_path)
@@ -63,25 +67,28 @@ def format_and_parse(webscrapper_csv_path):
 
     # Replace non-target zip codes with zero (always found in duplicates)
     def replace_invalid_zipcodes(x):
-        target_zipcodes = [27943, 27936, 27920, 27915, 27927, 27982, 27968]
+        target_zipcodes = ['27943', '27936', '27920', '27915', '27972', '27982', '27968']
         if x in target_zipcodes:
             return x
         else:
-            return 0
+            return '0'
 
     df['Zip'] = df['Zip'].apply(replace_invalid_zipcodes)
-
+    
 
     # Replace non-target cities with empty string (always found in duplicates)
+    # TODO elimitate leading whitespace
     def replace_invalid_cities(x):
-        target_cities = ['Avon', 'Buxton', 'Frisco', 'Hatteras', 'Rodanthe', 'Salvo', 'Waves']
+        target_cities = [' Avon', ' Buxton', ' Frisco', ' Hatteras', ' Rodanthe', ' Salvo', ' Waves']
         if x in target_cities:
             return x
         else:
             return ''
 
+    print(df['City'])
     df['City'] = df['City'].apply(replace_invalid_cities)
-
+    print(df['City'])
+    
 
     # For duplicate "StreetAddress":
     #   Take the higher of all numerical fields
@@ -198,3 +205,11 @@ def format_and_parse(webscrapper_csv_path):
     df['MonthsSold'] = df['MonthsSold']/np.timedelta64(1,'M')
 
     return df
+
+
+def main():
+    result = format_and_parse('zillow-sold.csv')
+    print(result)
+    
+if __name__ == "__main__":
+    main()
