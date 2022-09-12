@@ -64,7 +64,7 @@
       "type": "SelectorText",
       "selector": "li:contains('bd'), span[class*='StyledPropertyCardHomeDetails'] span:contains('bd')",
       "multiple": false,
-      "regex": "[0-9]"
+      "regex": "[0-9]+"
     },
     {
       "id": "baths",
