@@ -11,6 +11,7 @@ TODO:
 * migrate colab to gist
 * migrate code to script
 * incorporate new sold data into existing data without duplicates (and avoid over scrapping - maybe remove pagination)
+* switch to relu deep vs linear regression
 
 Note:  When exporting a sitemap, regex patterns have extra '\' inserted such that the regex pattern isn't correct when viewed in the JSON.  However, upon import, these extra '\' are removed, so don't attempt to fix regex in the JSON file.
 
