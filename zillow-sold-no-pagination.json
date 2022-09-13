@@ -55,7 +55,7 @@
       "id": "beds",
       "multiple": false,
       "parentSelectors": ["Separate scroller"],
-      "regex": "[0-9]",
+      "regex": "[0-9]+",
       "selector": "li:contains('bd'), span[class*='StyledPropertyCardHomeDetails'] span:contains('bd')",
       "type": "SelectorText"
     },

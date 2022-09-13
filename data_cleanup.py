@@ -23,14 +23,28 @@ def format_and_parse(webscrapper_csv_path):
 
     # To support deduplication break up the address field
     df['StreetAddress'] = df['address'].str.split(',').str[0]
-    df['City'] = df['address'].str.split(',').str[1]
+    df['City'] = df['address'].str.split(',').str[1].str.lstrip(' ')
     df['State'] = df['address'].str.split(',').str[2].str.split(' ').str[1]
     df['Zip'] = df['address'].str.split(',').str[2].str.split(' ').str[2]
+    
+    
+    # Drop rows with NaN zip code
+    df.dropna(subset=['Zip'], inplace=True)
+    # Convert Zip to int
+    df['Zip'] = df['Zip'].astype(int)
+
+    # Convert PropertyDetails to string
+    df['PropertyDetails'] = df['PropertyDetails'].astype(str)
 
     # For the street address field, delete text matches "LOT X" where X represents
     # any digit, digits, letter, or hyphenated combination.
     target_regex = '\ (L|l)(O|o)(T|t)\ (([0-9]+-*[0-9]*[A-Z]*)|[A-Z])'
     df['StreetAddress'] = df['StreetAddress'].str.replace(target_regex, '')
+
+    # Also replace "Street" with "St" and "Drive" with "Dr"
+    df['StreetAddress'] = df['StreetAddress'].str.replace("Street", "St")
+    df['StreetAddress'] = df['StreetAddress'].str.replace("Drive", "Dr")
+
 
     # Drop the Address Field
     df.drop('address', inplace=True, axis=1)
@@ -63,14 +77,14 @@ def format_and_parse(webscrapper_csv_path):
 
     # Replace non-target zip codes with zero (always found in duplicates)
     def replace_invalid_zipcodes(x):
-        target_zipcodes = [27943, 27936, 27920, 27915, 27927, 27982, 27968]
+        target_zipcodes = [27943, 27936, 27920, 27915, 27972, 27982, 27968]
         if x in target_zipcodes:
             return x
         else:
             return 0
 
     df['Zip'] = df['Zip'].apply(replace_invalid_zipcodes)
-
+    
 
     # Replace non-target cities with empty string (always found in duplicates)
     def replace_invalid_cities(x):
@@ -81,7 +95,6 @@ def format_and_parse(webscrapper_csv_path):
             return ''
 
     df['City'] = df['City'].apply(replace_invalid_cities)
-
 
     # For duplicate "StreetAddress":
     #   Take the higher of all numerical fields
@@ -113,6 +126,10 @@ def format_and_parse(webscrapper_csv_path):
                                               'City' : 'max',
                                               'Zip' : 'max',
                                               'PropertyDetails' : ', '.join}).reset_index()
+
+    # Drop any rows that have empty City
+    df['City'].replace('',np.nan, inplace=True)
+    df.dropna(subset=['City'], inplace=True)
 
     # Add binaries based on "PropertyDescription"
     def has_private_pool(x):
@@ -198,3 +215,16 @@ def format_and_parse(webscrapper_csv_path):
     df['MonthsSold'] = df['MonthsSold']/np.timedelta64(1,'M')
 
     return df
+
+def join_and_dedup(old_dataframe, new_dataframe):
+    df = pd.concat([old_dataframe, new_dataframe], ignore_index=True, sort=False)
+    df.drop_duplicates(inplace=True)
+    return df
+
+
+def main():
+    result = format_and_parse('zillow-sold.csv')
+    result.to_csv('out.csv', index=False)
+    
+if __name__ == "__main__":
+    main()
