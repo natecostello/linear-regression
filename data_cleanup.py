@@ -221,6 +221,7 @@ def join_and_dedup(old_dataframe, new_dataframe):
     df.drop_duplicates(inplace=True)
     return df
 
+
 def main():
     result = format_and_parse('zillow-sold.csv')
     result.to_csv('out.csv', index=False)
