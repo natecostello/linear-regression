@@ -3,6 +3,9 @@ This repo is for messing with linear regression.  Not that interesting.
 google colab thingy here:
 https://colab.research.google.com/drive/1fgjDQ6hCScbsCWsRSOZsg8OWmQuqUCbH#scrollTo=trpdAcsj9ZhR
 
+better colab thingies here:
+https://colab.research.google.com/drive/19pBaC0fSWJZAZTqX9lJMY5TgBjBCouyS?usp=sharing
+https://colab.research.google.com/drive/1w1-pJPj7Olj8rkfWD1goR2UMFsHQuYAP?usp=sharing
 
 this is all based on cribbing this:
 https://towardsdatascience.com/predicting-house-prices-with-linear-regression-machine-learning-from-scratch-part-ii-47a0238aeac1
